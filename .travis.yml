@@ -1,4 +1,3 @@
-language: emacs-lisp
 env:
   - EVM_EMACS=emacs-24.1-travis
   - EVM_EMACS=emacs-24.2-travis
@@ -10,8 +9,12 @@ env:
   - EVM_EMACS=emacs-25.3-travis
   - EVM_EMACS=emacs-26-pretest-travis
 before_install:
-  - curl -fsSkL https://gist.github.com/rejeep/7736123/raw > travis.sh && source ./travis.sh
+  - curl -fsSkL https://raw.github.com/rejeep/evm/master/go | bash
+  - evm config path /home/travis/.evm/evm
+  - export PATH="/home/travis/.cask/bin:$PATH"
+  - export PATH="/home/travis/.evm/bin:$PATH"
   - evm install $EVM_EMACS --use --skip
+  - curl -fsSkL https://raw.github.com/cask/cask/master/go | python
 install:
   - cask install
 script:
