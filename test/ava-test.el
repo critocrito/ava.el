@@ -25,9 +25,7 @@
 ;;; Code:
 (ert-deftest ava/first-test ()
   "A simple first test."
-  (should (equal (pp-to-string '(quote quote)) "'quote"))
-  (should (equal (pp-to-string '((quote a) (quote b))) "('a 'b)\n"))
-  (should (equal (pp-to-string '('a 'b)) "('a 'b)\n")))
+  (should (equal (ava/add 1 1) 2)))
 
 (provide 'ava-test)
 ;;; ava-test.el ends here
